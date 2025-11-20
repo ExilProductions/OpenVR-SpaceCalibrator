@@ -18,6 +18,7 @@ target_include_directories(imgui PRIVATE ../lib/gl3w/include ../lib/imgui)
 find_package(Eigen3 REQUIRED NO_MODULE)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GLFW REQUIRED glfw3)
+pkg_check_modules(OPENVR REQUIRED openvr)
 
 # Main executable
 add_executable(openvr-spacecalibrator 
@@ -34,6 +35,7 @@ target_include_directories(openvr-spacecalibrator PRIVATE
     ../lib/gl3w/include
     ../lib/openvr/
     ../lib/imgui
+    ${OPENVR_INCLUDE_DIRS}
 )
 
 target_link_libraries(openvr-spacecalibrator 
@@ -41,16 +43,11 @@ target_link_libraries(openvr-spacecalibrator
     gl3w
     imgui
     ${GLFW_LIBRARIES}
+    ${OPENVR_LIBRARIES}
     ${CMAKE_DL_LIBS}
 )
 
-# Copy OpenVR library
-add_custom_command(TARGET openvr-spacecalibrator POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_SOURCE_DIR}/lib/openvr/lib/linux64/libopenvr_api.so"
-        $<TARGET_FILE_DIR:openvr-spacecalibrator>
-    COMMENT "Copying OpenVR library"
-)
+
 
 # Installation
 install(TARGETS openvr-spacecalibrator DESTINATION bin)
