@@ -26,21 +26,39 @@ pacman -S cmake glfw-x11 eigen openvr
 sudo apt install cmake libeigen3-dev libglfw3-dev libopenvr-dev
 ```
 
-**Build Steps:**
+### Quick Install (Recommended)
 ```bash
 git clone https://github.com/Stavdel/OpenVR-SpaceCalibrator.git
 cd OpenVR-SpaceCalibrator
-mkdir build
-cd build
-../install.sh
+./build-and-install.sh
+```
+
+### Manual Build
+```bash
+git clone https://github.com/Stavdel/OpenVR-SpaceCalibrator.git
+cd OpenVR-SpaceCalibrator
+mkdir build && cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/.local
+make -j$(nproc)
+make install
+```
+
+### Build Options
+You can customize the build with these CMake options:
+```bash
+cmake .. -DINSTALL_DRIVER=OFF           # Skip driver installation
+cmake .. -DINSTALL_DESKTOP=OFF          # Skip desktop entry
+cmake .. -DSTEAMVR_DIR=/custom/path     # Custom SteamVR directory
 ```
 
 ## Running
 
-If you used the `install.sh` script, the driver will be loaded automatically by SteamVR. However, the **companion software (UI)** must be started separately to perform the calibration.
+The driver will be loaded automatically by SteamVR after installation. However, the **companion software (UI)** must be started separately to perform the calibration.
 
 1. Launch SteamVR.
-2. Start the `openvr-spacecalibrator` companion software from your build folder or app launcher.
+2. Start the `openvr-spacecalibrator` companion software:
+   - From your desktop menu (if installed with desktop entry)
+   - Or run directly: `~/.local/bin/openvr-spacecalibrator`
 
 ## Calibration Guide
 
