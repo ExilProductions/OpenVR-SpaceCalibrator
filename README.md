@@ -33,6 +33,13 @@ cd OpenVR-SpaceCalibrator
 ./build-and-install.sh
 ```
 
+### Uninstall
+To remove OpenVR Space Calibrator:
+```bash
+cd OpenVR-SpaceCalibrator
+./uninstall.sh
+```
+
 ### Manual Build
 ```bash
 git clone https://github.com/Stavdel/OpenVR-SpaceCalibrator.git
@@ -114,6 +121,28 @@ This tool aligns multiple tracking systems. Results vary depending on your hardw
 - **Wireless Headsets + Lighthouse Trackers:** Works well for stationary or moderate movement (Beat Saber, VRChat). Extensive room-scale movement may require Continuous Calibration to correct drift.
 - **WMR / SLAM HMDs + Lighthouse:** Excellent for limited movement; may experience slight drift over large areas.
 - **Oculus CV1 + Vive Devices:** Generally works very well with high stability.
+
+## Uninstalling
+
+To completely remove OpenVR Space Calibrator from your system:
+
+1. Navigate to the source directory:
+   ```bash
+   cd OpenVR-SpaceCalibrator
+   ```
+
+2. Run the uninstall script:
+   ```bash
+   ./uninstall.sh
+   ```
+
+The uninstall script will:
+- Remove the companion software executable
+- Remove the desktop entry and icon
+- Remove the OpenVR driver from SteamVR
+- Clean up empty directories
+
+**Note:** You may need to restart SteamVR after uninstalling for the driver to be fully removed.
 
 ## Credits
 
