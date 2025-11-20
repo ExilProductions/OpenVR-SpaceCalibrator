@@ -33,6 +33,30 @@ CMakeConfigureLog.yaml
 *.lib
 *.exe
 
+# Configured files
+*.desktop
+
+# CMake generated files
+CMakeFiles/
+*/CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*/Makefile
+compile_commands.json
+*.cmake
+!CMakeLists.txt
+
+# CMake logs
+CMakeConfigureLog.yaml
+
+# Generated libraries
+*.a
+*.so
+*.dll
+*.lib
+*.exe
+
 # IDE files
 .idea
 
